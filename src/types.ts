@@ -1,6 +1,7 @@
 
 
 import express, { Express, Request, Response } from "express";
+import { ErrorNames } from "./constants";
 
 export type TResponse<T = ResponseProps> = Response<T, TUser>;
 
@@ -13,4 +14,13 @@ export type ResponseProps = {
 
 export type TUser = {
     user: any; 
+}
+
+export type ErrorMiddlewareType = {
+    [key in keyof typeof ErrorNames]: ErrorMiddlewareTypeProps
+}
+
+export type ErrorMiddlewareTypeProps = {
+    error: string;
+    message: string
 }

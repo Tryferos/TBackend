@@ -1,16 +1,8 @@
+import { ErrorMiddlewareType } from "./types";
 
 export const USER_TOKEN_HEADER_KEY = "tokenid";
 
-type ErrorMiddlewareType = {
-    [key in keyof typeof ErrorNames]: ErrorMiddlewareTypeProps
-}
-
-export type ErrorMiddlewareTypeProps = {
-    error: string;
-    message: string
-}
-
-const ErrorNames = {
+export const ErrorNames = {
     UNAUTHENTICATED: 'UNAUTHENTICATED',
     UNKNOWN: 'UNKNOWN',
 } as const

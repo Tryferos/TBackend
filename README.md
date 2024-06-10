@@ -4,8 +4,6 @@ This is a simple yet powerful **Template** for backend server using express and 
 
 ## :electric_plug: Installation
 
-##
-
 Get TBackend Template
 
 ```bash
