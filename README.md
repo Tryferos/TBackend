@@ -1,6 +1,6 @@
 # Express Backend Template
 
-This is a simple yet powerful **template** for backend server using express and typescript.
+This is a simple yet powerful **Template** for backend server using express and typescript.
 
 ## :electric_plug: Installation
 
@@ -22,22 +22,20 @@ Remember that you need to install the depedencies
   npm i
 ```
 
-Create a .env file
+Create a `.env` file
 
 ```bash
   PORT=3033
   API_VERSION=1
 ```
 
-Run nodemon to watch and transpile your code from typescript in real time.
+Run **nodemon** to watch and transpile your code from typescript in real time.
 
 ```bash
   npm run watch
 ```
 
 Make your changes, then build and upload your server.
-
-Create a .env file
 
 ```bash
   npm run build
