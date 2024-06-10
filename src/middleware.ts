@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from "express";
+import { ErrorRequestHandler, NextFunction, Request, Response } from "express";
 import rateLimit from "express-rate-limit";
 import {  ErrorMiddlewareTypeProps, ErrorMiddlewareTypes, USER_TOKEN_HEADER_KEY } from "./constants";
 import { TRequest, TResponse } from "./types";
@@ -27,7 +27,6 @@ export const authenticateUser = async (req: TRequest, res: TResponse, next: Next
 export const checkAuthentication = (req: TRequest, res: TResponse<ErrorMiddlewareTypeProps>, next: NextFunction) => {
     if (res.locals.user == null) {
         res.status(401).json({ ...ErrorMiddlewareTypes.UNAUTHENTICATED })
-        return;
     }
     next();
 }

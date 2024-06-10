@@ -20,7 +20,7 @@ app.use(express.static('public'))
 
 app.use(limiter);
 
-app.use(authenticateUser)
+app.use(authenticateUser);
 
 app.get('/', (req, res) => {
     res.json({ api: `v${version}` });
