@@ -6,7 +6,11 @@ This is a simple yet powerful **template** for backend server using express and 
 
 ##
 
-Install @tryferos/dropdown using
+Get TBackend Template
+
+```bash
+  mkdir my_awesome_new_server && cd my_awesome_new_server && git init
+```
 
 ```bash
   git pull https://github.com/Tryferos/TBackend.git
