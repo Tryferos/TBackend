@@ -1,6 +1,6 @@
 import { NextFunction, } from "express";
 import rateLimit from "express-rate-limit";
-import {   ErrorMiddlewareTypes, USER_TOKEN_HEADER_KEY } from "./constants";
+import {   ErrorMiddlewareTypes, USER_TOKEN_HEADER_KEY } from "./libs/constants";
 import { ErrorMiddlewareTypeProps, TRequest, TResponse } from "./types";
 
 export const limiter = rateLimit({

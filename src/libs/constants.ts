@@ -1,4 +1,4 @@
-import { ErrorMiddlewareType } from "./types";
+import { ErrorMiddlewareType } from "../types";
 
 export const USER_TOKEN_HEADER_KEY = "tokenid";
 

@@ -2,11 +2,13 @@
 import dotenv from 'dotenv';
 import express, {Express} from 'express';
 import helmet from 'helmet';
-import path from 'path';
 import { authenticateUser, limiter } from './middleware';
 import { router as globalRouter } from './routes';
 
 dotenv.config();
+
+// *import of database must be after dotenv decleration in order for the .env file to be loaded
+import  './database';
 
 const app: Express = express();
 const port = process.env.PORT ?? 3000;
@@ -23,8 +25,8 @@ app.use(authenticateUser);
 
 app.use('/', globalRouter);
 
-app.listen(port, () => {
-console.log(`[server]: Server is running at http://localhost:${port}`);
+app.listen(port, async() => {
+    console.log(`[server]: Server is running at http://localhost:${port}`);
 });
 
 module.exports = app;

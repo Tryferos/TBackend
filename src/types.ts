@@ -1,7 +1,7 @@
 
 
 import express, { Express, Request, Response } from "express";
-import { ErrorNames } from "./constants";
+import { ErrorNames } from "./libs/constants";
 
 export type TResponse<T = ResponseProps> = Response<T, TUser>;
 
