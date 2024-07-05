@@ -1,6 +1,6 @@
 import express from "express";
-import { checkAuthentication } from "../middleware";
-import { TRequest, TResponse } from "../types";
+import { checkAuthentication } from "../../middleware";
+import { TRequest, TResponse } from "../../types";
 
 export const router = express.Router();
 
