@@ -2,7 +2,7 @@
 
 import express, { Express, Request, Response } from "express";
 import { ErrorNames } from "./libs/constants";
-import { User } from "./database/schema/User";
+import { User } from "./database/schema/user";
 
 export type TResponse<T = ResponseProps> = Response<T, TUser>;
 

@@ -2,7 +2,7 @@ import { NextFunction, } from "express";
 import rateLimit from "express-rate-limit";
 import {   ErrorMiddlewareTypes, USER_TOKEN_HEADER_KEY } from "./libs/constants";
 import { ErrorMiddlewareTypeProps, TRequest, TResponse } from "./types";
-import { UserModel } from "./database/schema/User";
+import { UserModel } from "./database/schema/user";
 
 export const limiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
