@@ -2,6 +2,7 @@
 
 import express, { Express, Request, Response } from "express";
 import { ErrorNames } from "./libs/constants";
+import { User } from "./database/schema/User";
 
 export type TResponse<T = ResponseProps> = Response<T, TUser>;
 
@@ -13,7 +14,7 @@ export type ResponseProps = {
 }
 
 export type TUser = {
-    user: any; 
+    user: User | null; 
 }
 
 export type ErrorMiddlewareType = {

@@ -2,6 +2,7 @@ import { NextFunction, } from "express";
 import rateLimit from "express-rate-limit";
 import {   ErrorMiddlewareTypes, USER_TOKEN_HEADER_KEY } from "./libs/constants";
 import { ErrorMiddlewareTypeProps, TRequest, TResponse } from "./types";
+import { UserModel } from "./database/schema/User";
 
 export const limiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
@@ -18,8 +19,8 @@ export const authenticateUser = async (req: TRequest, res: TResponse, next: Next
         next();
         return;    
     }
-    const user = {};
     //todo: retrieve user data
+    const user = await UserModel.findOne({uid: tokenId});
     res.locals.user = user;
     next();
 }

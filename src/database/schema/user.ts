@@ -4,16 +4,22 @@ const {Schema} = mongoose;
 const {ObjectId} = Schema;
 
 /*
-
     * Google User
-
 */
 
-const UserSchema = new Schema({
+export interface User {
+    uid: string,
+    displayName: string,
+    email: string,
+    photoURL: string,
+    date: Date,
+}
+
+const UserSchema = new Schema<User>({
     uid: ObjectId,
-    displayName: String,
-    email: String,
-    photoURL: String,
+    displayName: {type: String, required: true},
+    email: {type: String, required:true},
+    photoURL: {type: String, required: true,},
     date: {type: Date, default: Date.now},
 });
 
