@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { AppDocument } from ".";
 
 const {Schema} = mongoose;
 const {ObjectId} = Schema;
@@ -7,7 +8,7 @@ const {ObjectId} = Schema;
     * Google User
 */
 
-export interface User {
+export interface User extends AppDocument {
     uid: string,
     displayName: string,
     email: string,
