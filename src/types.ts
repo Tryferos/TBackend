@@ -1,8 +1,8 @@
 
 
 import express, { Express, Request, Response } from "express";
-import { User } from "./database/schema/user";
 import { ErrorNames } from "./constants/ErrorHandling";
+import { UserRecord } from "firebase-admin/lib/auth/user-record";
 
 export type TResponse<T = ResponseProps> = Response<T, TUser>;
 
@@ -14,7 +14,7 @@ export type ResponseProps = {
 }
 
 export type TUser = {
-    user: User | null; 
+    user: UserRecord | null; 
 }
 
 export type ErrorMiddlewareType = {

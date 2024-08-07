@@ -1,8 +1,8 @@
 import { NextFunction, } from "express";
 import rateLimit from "express-rate-limit";
 import { ErrorMiddlewareTypeProps, TRequest, TResponse } from "./types";
-import { UserModel } from "./database/schema/user";
 import { ErrorMiddlewareTypes, USER_TOKEN_HEADER_KEY } from "./constants/ErrorHandling";
+import { auth } from "./auth/firebase";
 
 export const limiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
@@ -14,13 +14,14 @@ export const limiter = rateLimit({
 
 export const authenticateUser = async (req: TRequest, res: TResponse, next: NextFunction) => {
     const tokenId = req.headers[USER_TOKEN_HEADER_KEY] as string;
-    if (tokenId == undefined || tokenId == null || tokenId == 'null') {
+    if (tokenId === undefined || tokenId === null || tokenId === 'null' || tokenId.length===0) {
         res.locals.user = null;
         next();
         return;    
     }
     //todo: retrieve user data
-    const user = await UserModel.findOne({uid: tokenId});
+    const {uid} = await auth().verifyIdToken(tokenId);
+    const user = await auth().getUser(uid);
     res.locals.user = user;
     next();
 }
@@ -28,6 +29,7 @@ export const authenticateUser = async (req: TRequest, res: TResponse, next: Next
 export const checkAuthentication = (req: TRequest, res: TResponse<ErrorMiddlewareTypeProps>, next: NextFunction) => {
     if (res.locals.user == null) {
         res.status(401).json({ ...ErrorMiddlewareTypes.UNAUTHENTICATED })
+        return;
     }
     next();
 }
