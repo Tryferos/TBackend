@@ -19,10 +19,13 @@ export const authenticateUser = async (req: TRequest, res: TResponse, next: Next
         next();
         return;    
     }
-    //todo: retrieve user data
-    const {uid} = await auth().verifyIdToken(tokenId);
-    const user = await auth().getUser(uid);
-    res.locals.user = user;
+    try{
+        const {uid} = await auth().verifyIdToken(tokenId);
+        const user = await auth().getUser(uid);
+        res.locals.user = user;
+    }catch(err){
+        res.locals.user = null;
+    }
     next();
 }
 
